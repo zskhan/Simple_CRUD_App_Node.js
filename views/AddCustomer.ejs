@@ -1,0 +1,67 @@
+<%- include HeaderFooter/header.ejs%>
+<div class="page-data">
+
+ <form id="Cus_Data" method="post" action="add">
+     <table><tr>
+         <td class="label">Name: </td><td><input type="text" name="name" pattern="[a-zA-Z]{1,}" required   placeholder="Enter name" ></td>
+     </tr>
+     <tr>
+         <td class="label">Address: </td><td><textarea name="address" required  cols="20" rows="5"></textarea></td>
+     </tr>
+     <tr>
+         <td class="label">Email Address: </td><td><input type="email" required name="email" ></td>
+     </tr>
+     <tr>
+         <td class="label">Contact Number: </td><td><input type="text" pattern="[0-9]{7,}" required name="number" ></td>
+     </tr>
+     <tr>
+         <td class="label"></td>
+         <td>
+             <input type="submit" name="submit" value="Save">
+             <input type="button" name="cancel" value="Cancel" class="cancel" onclick="cancelAdd()">
+         </td>
+     </tr>
+     </table>
+ </form>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.8/jquery.validate.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            /*$.validator.addMethod("characterOnly", function(value, element) {
+                var exp = new RegExp(/^[^ ][a-zA-Z ]+$/);
+                return exp.test(value);
+            });*/
+            $("#Cus_Data").validate({
+
+                rules:{
+                    "name":{
+                        minlength:5/*,
+                        characterOnly:true*/
+                    },
+                    "address":{
+                        required:true
+                    },
+                    "number":{
+                        number:true
+                    }
+                },
+                messages: {
+                    name:{
+                        minlength: "Name must be atleast 5 charachters",
+                        characterOnly:"Character only"
+                    },
+                    address:{
+                        required:"Enter address"
+                    },
+                    number:{
+                        number:"Enter valid number"
+                    }
+                }
+
+            });
+        });
+    </script>
+
+</div>
+<%- include HeaderFooter/footer.ejs%>

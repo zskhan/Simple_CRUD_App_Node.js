@@ -1,0 +1,45 @@
+<%- include HeaderFooter/header.ejs%>
+<div class="page-data">
+    <div class="data-btn">
+        <button onClick="addUser();">+ Add</button>
+    </div>
+    <div class="data-table">
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>E-Mail</th>
+                <th>Phone</th>
+                <th>Action</th>
+            </tr>
+            <% if(data.length) {
+                data.forEach(function(detail){ %>
+                    <tr>
+                        <td><%= detail.id %></td>
+                        <td><%= detail.name %></td>
+                        <td><%= detail.address %></td>
+                        <td><%= detail.email %></td>
+                        <td><%= detail.phone %></td>
+                        <td>
+                            <a class="a-inside edit" href="../customer/edit/<%= detail.id %>" >Edit</a>
+                            <a class="a-inside delete" href="../customer/delete/<%= detail.id %>" >Delete</a>
+                        </td>
+                    </tr>
+
+
+
+
+            <%    })
+            }else{ %>
+
+            <tr>
+                <td colspan="5">NO DATA TO SHOW</td>
+            </tr>
+
+            <%
+            }  %>
+        </table>
+    </div>
+</div>
+<%- include HeaderFooter/footer.ejs%>

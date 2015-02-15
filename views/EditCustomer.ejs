@@ -1,0 +1,27 @@
+<%- include HeaderFooter/header.ejs%>
+<div class="page-data">
+
+    <form id="Cus_Data" method="post" action="/customer/edit/<%= data[0].id %>">
+        <table><tr>
+                <td class="label">Name: </td><td><input type="text" name="name" pattern="[a-zA-Z]{1,}" required value="<%= data[0].name %>" ></td>
+            </tr>
+            <tr>
+                <td class="label">Address: </td><td><textarea name="address" required  cols="20" rows="5"><%= data[0].address %></textarea></td>
+            </tr>
+            <tr>
+                <td class="label">Email Address: </td><td><input type="email" required name="email" value="<%= data[0].email %>" ></td>
+            </tr>
+            <tr>
+                <td class="label">Contact Number: </td><td><input type="text" pattern="[0-9]{7,}" required name="number" value="<%= data[0].phone %>" ></td>
+            </tr>
+            <tr>
+                <td class="label"></td>
+                <td>
+                    <input type="submit" name="submit" value="Save">
+                    <input type="button" name="cancel" value="Cancel" class="cancel" onclick="cancelAdd()">
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<%- include HeaderFooter/footer.ejs%>
